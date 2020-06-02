@@ -1,11 +1,11 @@
 import telebot
-from telebot import types
+
 bot = telebot.TeleBot('1137709917:AAEZNbC7R-qspaqqdJesoDmHthFHXO0v6qw')
 
-markup = types.ReplyKeyboardMarkup(row_width=1)
-itembutton1 = types.KeyboardButton("Hi")
-
-@bot.message_handler(['hi','hello'])
-
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.send_message(message.chat.id, "Welcome "
+                     + message.from_user.first_name
+                     + ' ' + message.from_user.last_name + ", I am GreenWrapBot")
 
 bot.polling()
